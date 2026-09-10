@@ -1,0 +1,28 @@
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - errcheck      # error yang tidak diperiksa
+    - govet
+    - ineffassign   # assignment yang tidak pernah dipakai
+    - staticcheck
+    - unused
+    - gosimple
+    - gofmt
+    - goimports
+    - misspell
+    - bodyclose     # response body HTTP yang tidak ditutup
+    - sqlclosecheck # rows/statement SQL yang tidak ditutup
+    - rowserrcheck  # rows.Err() yang tidak diperiksa
+    - noctx         # request HTTP tanpa context
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
